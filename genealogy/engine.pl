@@ -35,11 +35,11 @@ grandchild(X,Z):-grandparent(Z,X).
 predecessor(X,Z):-parent(X,Z);parent(X,Y),predecessor(Y,Z).
 descendant(X,Z):-predecessor(Z,X).
 
-sibling(X,Y) :- (
+sibling(X,Y) :-  
+                (
                   (child(X,M,F),child(Y,M,F))
                   ;(child(X,P),child(Y,P),not((child(X,M,F),child(Y,M,F))))
-                )
-                ,\==(X,Y).
+                ),(X\=Y).
 brother(X,Y):-sibling(X,Y),male(X).
 sister(X,Y):-sibling(X,Y),female(X).
 
@@ -50,4 +50,4 @@ nephew(X,Y):-sibling(Z,Y),son(X,Z).
 niece(X,Y):-sibling(Z,Y),daughter(X,Z).
 
 cousin2(X,Y):-parent(Z,X),sibling(W,Z),child(Y,W).
-cousin(X,Y):-sibling(X,Y);parent(Z,X),cousin(W,Z),child(Y,W).
+cousin(X,Y):-sibling(X,Y);parent(Z,X),cousin(Z,W),child(Y,W).
