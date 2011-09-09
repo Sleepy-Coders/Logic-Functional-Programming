@@ -1,103 +1,131 @@
-:- use_module(engine).
+:- use_module(engine/main).
 
-male(andriy_tymchuk).
-male(yuriy_tymchuk1).
-male(yuriy_tymchuk0).
-male(volodymyr_zubrytskyj).
-male(antin_nehrebetskyj).
-male(yosyf_savchynskyj).
-male(ivan_savchynskyj).
-male(lev_stefanovych).
-male(hryhoriy_savchynskyj).
-male(karl_bandrivskyj).
-male(amvrosiy_krushelnytskyj).
-male(danylo_peretyatko).
-male(yuriy_peretyatko).
-male(demyan_peretyatko).
-male(kyrylo_peretyatko).
-male(myroslav_skoryk).
-male(volodymyr_skoryk).
-male(skoryk).
-male(volodymyr_okhrymovych).
 male(onufriy_savchynskyj).
-male(vasyl_savchynskyj).
-female(orysia_dzikevuch).
-female(olha_zubrytska).
-female(olha_nehrebetska).
-female(olena_savchynska).
-female(irena_nehrebetska).
-female(theodora_savchynska1).
-female(wife_of_yosyf_savchynskyj).
-female(anna_stefanovych).
-female(anna_hotorovska).
-female(josypha_krushelnytska).
-female(odarka_bandrivska).
-female(olha_bandrivska).
-female(theodora_savchynska0).
-female(solomiya_krushelnytska).
-female(anna_krushelnytska).
-female(milena_skoryk).
-female(larysa_kuzma).
-female(maria_okhrymovych).
-female(olena_krushelnytska).
-female(maria_krushelnytska).
-female(anna_hotorovska).
-female(solomija).
-
-parent(andriy_tymchuk,yuriy_tymchuk1).
-parent(orysia_dzikevuch,yuriy_tymchuk1).
-parent(yuriy_tymchuk0,andriy_tymchuk).
-parent(olha_zubrytska,andriy_tymchuk).
-parent(volodymyr_zubrytskyj,olha_zubrytska).
-parent(olha_nehrebetska,olha_zubrytska).
-parent(antin_nehrebetskyj,olha_nehrebetska).
-parent(olena_savchynska,olha_nehrebetska).
-parent(antin_nehrebetskyj,irena_nehrebetska).
-parent(olena_savchynska,irena_nehrebetska).
-parent(yosyf_savchynskyj,olena_savchynska).
-parent(wife_of_yosyf_savchynskyj,olena_savchynska).
-parent(yosyf_savchynskyj,ivan_savchynskyj).
-parent(wife_of_yosyf_savchynskyj,ivan_savchynskyj).
-parent(theodora_savchynska1,anna_stefanovych).
-parent(lev_stefanovych,anna_stefanovych).
-parent(yosyf_savchynskyj,theodora_savchynska1).
-parent(wife_of_yosyf_savchynskyj,theodora_savchynska1).
-parent(hryhoriy_savchynskyj,yosyf_savchynskyj).
-parent(anna_hotorovska,yosyf_savchynskyj).
-parent(josypha_krushelnytska,odarka_bandrivska).
-parent(karl_bandrivskyj,odarka_bandrivska).
-parent(josypha_krushelnytska,olha_bandrivska).
-parent(karl_bandrivskyj,olha_bandrivska).
-parent(theodora_savchynska0,josypha_krushelnytska).
-parent(amvrosiy_krushelnytskyj,josypha_krushelnytska).
-parent(theodora_savchynska0,solomiya_krushelnytska).
-parent(amvrosiy_krushelnytskyj,solomiya_krushelnytska).
-parent(theodora_savchynska0,anna_krushelnytska).
-parent(amvrosiy_krushelnytskyj,anna_krushelnytska).
-parent(milena_skoryk,danylo_peretyatko).
-parent(yuriy_peretyatko,danylo_peretyatko).
-parent(milena_skoryk,demyan_peretyatko).
-parent(yuriy_peretyatko,demyan_peretyatko).
-parent(milena_skoryk,kyrylo_peretyatko).
-parent(yuriy_peretyatko,kyrylo_peretyatko).
-parent(larysa_kuzma,milena_skoryk).
-parent(myroslav_skoryk,milena_skoryk).
-parent(maria_okhrymovych,myroslav_skoryk).
-parent(skoryk,myroslav_skoryk).
-parent(maria_okhrymovych,volodymyr_skoryk).
-parent(skoryk,volodymyr_skoryk).
-parent(olena_krushelnytska,maria_okhrymovych).
-parent(volodymyr_okhrymovych,maria_okhrymovych).
-parent(theodora_savchynska0,olena_krushelnytska).
-parent(amvrosiy_krushelnytskyj,olena_krushelnytska).
-parent(theodora_savchynska0,maria_krushelnytska).
-parent(amvrosiy_krushelnytskyj,maria_krushelnytska).
-parent(theodora_savchynska0,volodymyr_krushelnytskyj).
-parent(amvrosiy_krushelnytskyj,volodymyr_krushelnytskyj).
-parent(theodora_savchynska0,antin_krushelnytskyj).
-parent(amvrosiy_krushelnytskyj,antin_krushelnytskyj).
-parent(hryhoriy_savchynskyj,theodora_savchynska0).
-parent(anna_hotorovska,theodora_savchynska0).
-parent(onufriy_savchynskyj,hryhoriy_savchynskyj).
-parent(solomija,hryhoriy_savchynskyj).
 parent(onufriy_savchynskyj,vasyl_savchynskyj).
+parent(onufriy_savchynskyj,hryhoriy_savchynskyj).
+female(solomija).
+parent(solomija,hryhoriy_savchynskyj).
+parent(solomija,vasyl_savchynskyj).
+
+	male(vasyl_savchynskyj).
+
+	male(hryhoriy_savchynskyj).
+	parent(hryhoriy_savchynskyj,josyf_savchynskyj).
+	parent(hryhoriy_savchynskyj,theodora_savchynska0).
+	female(anna_hotorovska).
+	parent(anna_hotorovska,josyf_savchynskyj).
+	parent(anna_hotorovska,theodora_savchynska0).
+	
+		male(josyf_savchynskyj).
+		parent(josyf_savchynskyj,olena_savchynska).
+		parent(josyf_savchynskyj,ivan_savchynskyj).
+		parent(josyf_savchynskyj,theodora_savchynska1).
+		female(wife_of_josyf_savchynskyj).
+		parent(wife_of_josyf_savchynskyj,olena_savchynska).
+		parent(wife_of_josyf_savchynskyj,ivan_savchynskyj).
+		parent(wife_of_josyf_savchynskyj,theodora_savchynska1).
+
+			female(olena_savchynska).
+			parent(olena_savchynska,olha_nehrebetska).
+			parent(olena_savchynska,irena_nehrebetska).
+			male(antin_nehrebetskyj).
+			parent(antin_nehrebetskyj,olha_nehrebetska).
+			parent(antin_nehrebetskyj,irena_nehrebetska).
+
+				female(olha_nehrebetska).
+				parent(olha_nehrebetska,olha_zubrytska).
+				male(volodymyr_zubrytskyj).
+				parent(volodymyr_zubrytskyj,olha_zubrytska).
+
+					female(olha_zubrytska).
+					parent(olha_zubrytska,andriy_tymchuk).
+					male(yuriy_tymchuk0).
+					parent(yuriy_tymchuk0,andriy_tymchuk).
+					
+						male(andriy_tymchuk).
+						parent(andriy_tymchuk,yuriy_tymchuk1).
+						female(orysia_dzikevuch).
+						parent(orysia_dzikevuch,yuriy_tymchuk1).
+
+							male(yuriy_tymchuk1).
+
+				female(irena_nehrebetska).
+
+			male(ivan_savchynskyj).
+
+			female(theodora_savchynska1).
+			parent(theodora_savchynska1,anna_stefanovych).
+			male(lev_stefanovych).
+			parent(lev_stefanovych,anna_stefanovych).
+				
+				female(anna_stefanovych).
+
+
+		female(theodora_savchynska0).
+		parent(theodora_savchynska0,josypha_krushelnytska).
+		parent(theodora_savchynska0,solomiya_krushelnytska).
+		parent(theodora_savchynska0,anna_krushelnytska).
+		parent(theodora_savchynska0,olena_krushelnytska).
+		parent(theodora_savchynska0,maria_krushelnytska).
+		parent(theodora_savchynska0,volodymyr_krushelnytskyj).
+		parent(theodora_savchynska0,antin_krushelnytskyj).
+		male(amvrosiy_krushelnytskyj).
+		parent(amvrosiy_krushelnytskyj,josypha_krushelnytska).
+		parent(amvrosiy_krushelnytskyj,solomiya_krushelnytska).
+		parent(amvrosiy_krushelnytskyj,anna_krushelnytska).
+		parent(amvrosiy_krushelnytskyj,olena_krushelnytska).
+		parent(amvrosiy_krushelnytskyj,maria_krushelnytska).
+		parent(amvrosiy_krushelnytskyj,volodymyr_krushelnytskyj).
+		parent(amvrosiy_krushelnytskyj,antin_krushelnytskyj).	
+
+			female(josypha_krushelnytska).
+			parent(josypha_krushelnytska,odarka_bandrivska).
+			parent(josypha_krushelnytska,olha_bandrivska).
+			male(karl_bandrivskyj).
+			parent(karl_bandrivskyj,odarka_bandrivska).
+			parent(karl_bandrivskyj,olha_bandrivska).
+
+				female(odarka_bandrivska).
+				female(olha_bandrivska).
+
+			female(solomiya_krushelnytska).
+
+			female(anna_krushelnytska).
+
+			female(olena_krushelnytska).
+			parent(olena_krushelnytska,maria_okhrymovych).
+			male(volodymyr_okhrymovych).
+			parent(volodymyr_okhrymovych,maria_okhrymovych).
+
+				female(maria_okhrymovych).
+				parent(maria_okhrymovych,myroslav_skoryk).
+				parent(maria_okhrymovych,volodymyr_skoryk).
+				male(skoryk).
+				parent(skoryk,myroslav_skoryk).
+				parent(skoryk,volodymyr_skoryk).
+
+					male(myroslav_skoryk).
+					parent(myroslav_skoryk,milena_skoryk).
+					female(larysa_kuzma).
+					parent(larysa_kuzma,milena_skoryk).
+					
+						female(milena_skoryk).
+						parent(milena_skoryk,danylo_peretyatko).
+						parent(milena_skoryk,demyan_peretyatko).
+						parent(milena_skoryk,kyrylo_peretyatko).
+						male(yuriy_peretyatko).
+						parent(yuriy_peretyatko,danylo_peretyatko).
+						parent(yuriy_peretyatko,demyan_peretyatko).
+						parent(yuriy_peretyatko,kyrylo_peretyatko).
+
+							male(danylo_peretyatko).
+							male(demyan_peretyatko).
+							male(kyrylo_peretyatko).							
+
+					male(volodymyr_skoryk).
+
+			female(maria_krushelnytska).
+
+			male(volodymyr_krushelnytskyj).
+
+			male(antin_krushelnytskyj).
