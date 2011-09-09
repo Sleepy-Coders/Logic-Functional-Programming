@@ -1,4 +1,5 @@
-:- use_module(engine).
+:- use_module(engine/main,except([sibling/2])).
+:- use_module(engine/extra).
 
 male('syn').
 male('tato').

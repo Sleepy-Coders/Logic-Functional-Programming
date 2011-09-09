@@ -6,7 +6,7 @@ This project is made for collaborating on Prolog language projects that should b
 Genealogy
 ---------
 
-`engine.pl` module contains procedures that should work with data that is located in the other files of the **genealogy** directory.
-To successfully run an app with your own datasource, use `engine.pl` module in your datasource file.
+**engine** directory has modules that contain procedures witch should work with data that is located in the data files located at the **genealogy** directory. `engine/main.pl` contains the most common and important procedures, while the other modules have some specific stuff.
+To successfully run an app with your own datasource, use `engine/main.pl` and other modules in your datasource file. Make sure to disable some predicates when adding more than one module, because there is a lot of intersecting stuff. 
 
-`demo.pl` has a dummy-data with fictional people.
+`demo.pl` and `demo2.pl` have a dummy-data with fictional people.
