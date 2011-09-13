@@ -1,37 +1,30 @@
 /*
- *	atDoor, atWindows, atCenter
- *	onFloor, onBox
- *	has, hasNot
+ *	Horizontal positions:
+ *		atDoor, atWindows, atCenter
+ *	Vertical positions:
+ *		onFloor, onBox
+ *	Banana state:
+ *		has, hasNot
  *
- *	goto(X, Y).
- *	push(X, Y).
- *	jump
- *	grab
+ *	Actions:
+ *		goto(X, Y)
+ *		push(X, Y)
+ *		jump
+ *		grab
+ *	
+ *	state(HorizontalMonkeyPosition, HorizontalBoxPosition, VerticalMonkeyPosition, BananaState)
  */
 
 action(state(atCenter, atCenter, onBox, hasNot),grab,state(atCenter, atCenter, onBox, has)).					%jump action
-action(state(BoxPlace, BoxPlace, onFloor, hasNot),jump,state(BoxPlace, BoxPlace, onBox, hasNot)).				%jump action
-action(state(BoxPlaceX, BoxPlaceX, onFloor, hasNot),push(BoxPlaceX, BoxPlaceY),state(BoxPlaceY, BoxPlaceY, onFloor, hasNot)).	%push action
-action(state(BoxPlace, PosX, onFloor, hasNot),goto(PosX,PosY),state(BoxPlace, PosY, onFloor, hasNot)).				%goto action
-
-/*
-*	action(goto(From, Where)) :- coordX(From), coordX(Where), (From\=Where).
-*	action(push(From, Where)) :- coordX(From), coordX(Where), (From\=Where).
-*	action(jump).
-*	action(grab).
-*	
-*	coordX(atDoor).
-*	coordX(atWindow).
-*	coordX(atCenter).
-*/
+action(state(BoxPos, BoxPos, onFloor, Banana),jump,state(BoxPos, BoxPos, onBox, Banana)).					%jump action
+action(state(BoxPosX, BoxPosX, onFloor, Banana),push(BoxPosX, BoxPosY),state(BoxPosY, BoxPosY, onFloor, Banana)).		%push action
+action(state(MonkeyPosX, BoxPos, onFloor, Banana),goto(MonkeyPosX,MonkeyPosY),state(MonkeyPosY, BoxPos, onFloor, Banana)).	%goto action
 
 goal(state(_,_,_,has)).
-%goal(OldState):-action(OldState,Action,NewState), action(Action), goal(NewState), (OldState\=NewState).
-goal(OldState):-%(OldState = state(_,_,_,has));
-                action(OldState,Action,NewState), goal(NewState),writef("%w\t",[Action]).%, (OldState\=NewState).
+goal(OldState):-action(OldState,Action,NewState), goal(NewState),writef("%w\t",[Action]).
 
 /*
- *	Below is line for faster debugging or program starting.
+ *	Line below is for faster debugging or program starting.
  */
-check(_) :- goal(state(atWindow, atDoor, onFloor, hasNot)).
+check(_) :- goal(state(atDoor, atWindow, onFloor, hasNot)).
 
