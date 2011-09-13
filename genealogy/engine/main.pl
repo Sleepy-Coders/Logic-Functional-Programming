@@ -34,6 +34,9 @@ grandchild(X,Z):-grandparent(Z,X).
 predecessor(X,Z):-parent(X,Z);parent(X,Y),predecessor(Y,Z).
 descendant(X,Z):-predecessor(Z,X).
 
+mostPredcessor(X, Y) :- predecessor(X, Y), not(parent(_, X)).
+mostChild(X, Y) :- descendant(X, Y), not(child(_, X)).
+
 sibling(X,Z):-father(Y,X),father(Y,Z),mother(W,X),mother(W,Z),\==(X,Z).
 
 brother(X,Y):-sibling(X,Y),male(X).
