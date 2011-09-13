@@ -17,7 +17,8 @@
 	nephew/2,
 	niece/2,
 	cousin2/2,
-	cousin/2
+	cousin/2,
+	upperCousin/2
 	]).
 
 father(X,Y):-parent(X,Y),male(X).
@@ -38,11 +39,15 @@ sibling(X,Z):-father(Y,X),father(Y,Z),mother(W,X),mother(W,Z),\==(X,Z).
 brother(X,Y):-sibling(X,Y),male(X).
 sister(X,Y):-sibling(X,Y),female(X).
 
-uncle(X,Y):-parent(Z,Y),brother(X,Z).
-aunt(X,Y):-parent(Z,Y),sister(X,Z).
+uncle(X,Y):-parent(Z,Y),brother(X,Z);parent(Z,Y).
+aunt(X,Y):-parent(Z,Y),sister(X,Z);parent(Z,Y).
 
 nephew(X,Y):-sibling(Z,Y),son(X,Z).
 niece(X,Y):-sibling(Z,Y),daughter(X,Z).
 
 cousin2(X,Y):-parent(Z,X),sibling(W,Z),child(Y,W).
 cousin(X,Y):-sibling(X,Y);parent(Z,X),cousin(Z,W),child(Y,W).
+
+
+%grandGrandCousin Section:
+grandGrandCousin(X,Y):-grandparent(X,Y);grandparent(M,Y),cousin(X,M).

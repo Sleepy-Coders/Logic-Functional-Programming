@@ -1,5 +1,7 @@
 :- use_module(engine/main).
+:- use_module(engine/marriage).
 
+married(onufriy_savchynskyj, solomija).
 male(onufriy_savchynskyj).
 parent(onufriy_savchynskyj,vasyl_savchynskyj).
 parent(onufriy_savchynskyj,hryhoriy_savchynskyj).
@@ -9,6 +11,7 @@ parent(solomija,vasyl_savchynskyj).
 
 	male(vasyl_savchynskyj).
 
+	married(hryhoriy_savchynskyj, anna_hotorovska).
 	male(hryhoriy_savchynskyj).
 	parent(hryhoriy_savchynskyj,josyf_savchynskyj).
 	parent(hryhoriy_savchynskyj,theodora_savchynska0).
@@ -16,6 +19,7 @@ parent(solomija,vasyl_savchynskyj).
 	parent(anna_hotorovska,josyf_savchynskyj).
 	parent(anna_hotorovska,theodora_savchynska0).
 	
+		married(josyf_savchynskyj, wife_of_josyf_savchynskyj).
 		male(josyf_savchynskyj).
 		parent(josyf_savchynskyj,olena_savchynska).
 		parent(josyf_savchynskyj,ivan_savchynskyj).
@@ -25,6 +29,7 @@ parent(solomija,vasyl_savchynskyj).
 		parent(wife_of_josyf_savchynskyj,ivan_savchynskyj).
 		parent(wife_of_josyf_savchynskyj,theodora_savchynska1).
 
+			married(antin_nehrebetskyj, olena_savchynska).
 			female(olena_savchynska).
 			parent(olena_savchynska,olha_nehrebetska).
 			parent(olena_savchynska,irena_nehrebetska).
@@ -32,16 +37,19 @@ parent(solomija,vasyl_savchynskyj).
 			parent(antin_nehrebetskyj,olha_nehrebetska).
 			parent(antin_nehrebetskyj,irena_nehrebetska).
 
+				married(volodymyr_zubrytskyj, olha_nehrebetska).
 				female(olha_nehrebetska).
 				parent(olha_nehrebetska,olha_zubrytska).
 				male(volodymyr_zubrytskyj).
 				parent(volodymyr_zubrytskyj,olha_zubrytska).
 
+					married(yuriy_tymchuk0, olha_zubrytska).
 					female(olha_zubrytska).
 					parent(olha_zubrytska,andriy_tymchuk).
 					male(yuriy_tymchuk0).
 					parent(yuriy_tymchuk0,andriy_tymchuk).
 					
+						married(andriy_tymchuk, orysia_dzikevuch).
 						male(andriy_tymchuk).
 						parent(andriy_tymchuk,yuriy_tymchuk1).
 						female(orysia_dzikevuch).
@@ -53,6 +61,7 @@ parent(solomija,vasyl_savchynskyj).
 
 			male(ivan_savchynskyj).
 
+			married(lev_stefanovych, theodora_savchynska1).
 			female(theodora_savchynska1).
 			parent(theodora_savchynska1,anna_stefanovych).
 			male(lev_stefanovych).
@@ -60,7 +69,7 @@ parent(solomija,vasyl_savchynskyj).
 				
 				female(anna_stefanovych).
 
-
+		married(amvrosiy_krushelnytskyj, theodora_savchynska0).
 		female(theodora_savchynska0).
 		parent(theodora_savchynska0,josypha_krushelnytska).
 		parent(theodora_savchynska0,solomiya_krushelnytska).
@@ -78,6 +87,7 @@ parent(solomija,vasyl_savchynskyj).
 		parent(amvrosiy_krushelnytskyj,volodymyr_krushelnytskyj).
 		parent(amvrosiy_krushelnytskyj,antin_krushelnytskyj).	
 
+			married(karl_bandrivskyj, josypha_krushelnytska).
 			female(josypha_krushelnytska).
 			parent(josypha_krushelnytska,odarka_bandrivska).
 			parent(josypha_krushelnytska,olha_bandrivska).
@@ -92,11 +102,13 @@ parent(solomija,vasyl_savchynskyj).
 
 			female(anna_krushelnytska).
 
+			married(volodymyr_okhrymovych, olena_krushelnytska).
 			female(olena_krushelnytska).
 			parent(olena_krushelnytska,maria_okhrymovych).
 			male(volodymyr_okhrymovych).
 			parent(volodymyr_okhrymovych,maria_okhrymovych).
 
+				married(skoryk, maria_okhrymovych).
 				female(maria_okhrymovych).
 				parent(maria_okhrymovych,myroslav_skoryk).
 				parent(maria_okhrymovych,volodymyr_skoryk).
@@ -104,11 +116,13 @@ parent(solomija,vasyl_savchynskyj).
 				parent(skoryk,myroslav_skoryk).
 				parent(skoryk,volodymyr_skoryk).
 
+					married(myroslav_skoryk, larysa_kuzma).
 					male(myroslav_skoryk).
 					parent(myroslav_skoryk,milena_skoryk).
 					female(larysa_kuzma).
 					parent(larysa_kuzma,milena_skoryk).
 					
+						married(yuriy_peretyatko, milena_skoryk).
 						female(milena_skoryk).
 						parent(milena_skoryk,danylo_peretyatko).
 						parent(milena_skoryk,demyan_peretyatko).
