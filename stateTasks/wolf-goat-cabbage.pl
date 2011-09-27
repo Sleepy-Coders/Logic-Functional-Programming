@@ -22,4 +22,5 @@ goal(OldState,[Action|Tail]) :-action(OldState,Action, NewState), willSurvive(Ne
 /*
  *	Line below is for faster debugging or program starting.
  */
+check(X) :- goal([shore,shore,shore,shore],X).
 check(Moves,X) :- length(X,Moves), goal([shore,shore,shore,shore],X).

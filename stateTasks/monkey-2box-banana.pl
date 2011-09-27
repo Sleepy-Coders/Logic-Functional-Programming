@@ -34,4 +34,4 @@ goal(OldState, [Action|L]):-action(OldState,Action,NewState), goal(NewState, L).
  *	Line below is for faster debugging or program starting.
  */
 check(L) :- goal(state(atDoor, atWindow, nearTree, separate, onFloor, hasNot),L).
-
+check(Moves,L) :- length(L,Moves), goal(state(atDoor, atWindow, nearTree, separate, onFloor, hasNot),L).
