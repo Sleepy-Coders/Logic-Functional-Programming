@@ -1,4 +1,6 @@
-Prolog Samples
+This project is made for collaboration on logical and functional programing projects that should be completed during a course in Lviv National University.
+
+Prolog
 ==============
 
 This project is made for collaborating on Prolog language projects that should be completed during a functional programing course in Lviv National University.
@@ -15,3 +17,13 @@ State Tasks
 -----------
 
 The `stateTasks` directory contains the solution for the state puzzles like **Monkey & banana** and **Wolf, goat, cabbage**.
+
+Database
+--------
+
+'dataBase' directory contains tasks that have some data written in prolog relations, and some functions to interact with it. Data-files themselves are stored in subdirectory 'db'.
+
+------------
+
+Lisp
+====

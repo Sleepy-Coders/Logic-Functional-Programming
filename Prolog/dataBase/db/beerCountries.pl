@@ -18,3 +18,4 @@ country('Australia',104,[
 	brewery('Cascade Brewery',[beer('Premium Lager',lager),beer('Pale Ale',lager),beer('Blonde',lager),beer('Amber',ale),beer('Draught',lager),beer('Lager (Blue)',lager),beer('Bitter (Red)',lager),beer('Stout',stout)],1832),
 	brewery('Coopers',[beer('Sparkling Ale',ale),beer('Pale Ale',ale),beer('Best Extra Stout',stout),beer('Dark Ale',ale),beer('Mild Ale',ale),beer('Premium Lager',lager),beer('62 Pilsner',pilsner),beer('Extra Strong Vintage Ale',ale),beer('Birell', non_alcohol),beer('Dr. Tims Traditional Ale',ale)],1862)
 ]).
+
