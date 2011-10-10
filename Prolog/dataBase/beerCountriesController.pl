@@ -4,6 +4,17 @@ contains([X|_],X).
 contains([_|Tail],X):-contains(Tail,X).
 :-op(500,xfx,contains).
 
+%service
+country(X):-country(X,_,_).
+brewery(X):-country(_,_,Y),Y contains brewery(X,_,_).
+breweryOfCountry(X,Z):-country(Z,_,Y),Y contains brewery(X,_,_).
+beer(X):-country(_,_,Y),Y contains brewery(_,W,_),W contains beer(X,_).
+beerOfBrewery(X,Z):-country(_,_,Y),Y contains brewery(Z,W,_),W contains beer(X,_).
+beerBreweryCountry(X,Z,C):-country(C,_,Y),Y contains brewery(Z,W,_),W contains beer(X,_).
+countryDrinks(X,Y):-country(X,Y,_).
+breweryOfYear(X,Z):-country(_,_,Y),Y contains brewery(X,_,Z).
+%=======
+
 typeIs(Beer,Type):-country(_,_,Y),Y contains brewery(_,Z,_),Z contains beer(Beer,Type).
 :-op(500,xfx,typeIs).
 
