@@ -19,3 +19,14 @@ country('Australia',104,[
 	brewery('Coopers',[beer('Sparkling Ale',ale),beer('Pale Ale',ale),beer('Best Extra Stout',stout),beer('Dark Ale',ale),beer('Mild Ale',ale),beer('Premium Lager',lager),beer('62 Pilsner',pilsner),beer('Extra Strong Vintage Ale',ale),beer('Birell', non_alcohol),beer('Dr. Tims Traditional Ale',ale)],1862)
 ]).
 
+country('Ukraine',56,[
+	brewery('Lvivske',[beer('Premium',pilsner), beer('1715',pilsner), beer('Svitle',pilsner), beer('Mitsne', pilsner), beer('Porter',stout), beer('Zhive', lager), beer('White Lion',wheet)],1715),
+	brewery('Chernihivske',[beer('Light',lager), beer('Premium',lager), beer('Strong',lager), beer('Dark',dark_lager), beer('White',wheat), beer('White Night',dark_wheat), beer('Fitness+',non_alcohol), beer('Pub Lager',lager)],1995),
+	brewery('Obolon',[beer('Carling',lager), beer('Hike',lager), beer('Premiun',lager), beer('Zibert Bavarian',lager)], 1974),
+	brewery('First Private Brewery',[beer('Stare misto',lager),beer('Medove',lager),beer('Bochkove',lager)], 2004)
+]).
+
+country('Ireland',131,[
+	brewery('Biddy Early',[beer('Black',stout), beer('Blonde',pale_lager), beer('Red',red_ale), beer('Real', red_ale)],1995),
+	brewery('Carlow Brewing Company',[beer('O’hara’s Celtic Stout',stout), beer('Curum Gold Celtic Wheat Beer',wheat), beer('Molings Traditional',ale), beer('Beerkeeper Gold',  wheat)],1998)
+]).
