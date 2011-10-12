@@ -1,13 +1,10 @@
 :-module(support,[
 	sumContents/2,
 	inRange/2,
-	inRange/3,
 	append/2,
-	range/3,
 	genList/3,
 	reverse/2,
-	rotate/2,
-	rotate/3
+	rotate/2
 	]).
 
 reverse([],[]).
@@ -24,22 +21,11 @@ inRange(X, Low, High) :- Low < High, LessLow is Low + 1, inRange(X, LessLow, Hig
 append([],[]):-!.
 append([X|Tail],Z) :- append(X,Y,Z), append(Tail,Y).
 
-range([N], N, N).
-range([Low|Tail], Low, High) :- Low < High, LesLow is Low + 1, range(Tail, LesLow, High).
-
 genList([],0,_).
 genList(L,Size,Fill) :- length(L,Size),containsOnly(L,Fill).
 
 containsOnly([X],X).
 containsOnly([X|Tail],X) :- containsOnly(Tail,X).
-
-contains([X|_],X).
-contains([_|Tail],X):-contains(Tail,X).
-
-matrix(A,Rows):-matrix_p(1,A,Rows),length(Rows,Length),length(A, Length).
-matrix_p(0,[],_).
-matrix_p(N,[X],A):-contains(A,line(N,Y)),contains(Y,X).
-matrix_p(N,[X|Tail],A):-contains(A,line(N,Y)),contains(Y,X),N1 is N+1,matrix_p(N1,Tail,A).
 
 rotate([], []).
 rotate([F|Fs], Ts) :-
