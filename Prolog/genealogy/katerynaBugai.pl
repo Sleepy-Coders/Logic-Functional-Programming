@@ -1,4 +1,4 @@
-:-use_module(engine/katia_engine).
+:-use_module(engine/katiaEngine).
 
 parent(kateryna_t,kateryna_k).
 parent(teodor_t,kateryna_k).
