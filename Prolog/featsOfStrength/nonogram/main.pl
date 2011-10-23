@@ -71,20 +71,11 @@ linesMatch([line(RowNumber, [RowCombHead|RCTail])|RowsTail], Cols, MatchedLines)
 %	Nonogram printing.
 %%
 printlist([]).
-printlist([H|T]) :- number(H), swritef(S, '~` tX~%w|', [H]), format(S, []), printlist(T).
+printlist([H|T]) :- number(H), swritef(S, '~` t#~%w|', [H]), format(S, []), printlist(T).
 
 printNonogram([]).
 printNonogram([H|T]):- printlist(H), nl, printNonogram(T).
 
-
-execTestAndWriteRess(TestName, M):-
-		nl,nl,write(TestName),write(':'),
-		testData(TestName, rows(Rs), cols(Cs)),
-		generateCombos(R, C, Rs, Cs),
-		nl,write('Rows combinations:\t'),write(R),
-		nl,write('Colums combinations:\t'),write(C),
-		linesMatch(R, C, M),
-		nl, write('Result:\t'), write(M).
 
 %%
 %	Solving nonograns.
