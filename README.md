@@ -21,9 +21,14 @@ The `stateTasks` directory contains the solution for the state puzzles like **Mo
 Database
 --------
 
-'dataBase' directory contains tasks that have some data written in prolog relations, and some functions to interact with it. Data-files themselves are stored in subdirectory 'db'.
+**dataBase** directory contains tasks that have some data written in prolog relations, and some functions to interact with it. Data-files themselves are stored in subdirectory **db**.
 
-------------
+featsOfStrength
+---------------
+
+Contains some special stuff that's almost impossible to accolplish ;)
+
+**nonogram** directory contains a nonogram (japanese cross-word) solver.
 
 Lisp
 ====
