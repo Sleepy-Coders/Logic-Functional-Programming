@@ -57,7 +57,7 @@ combMatch(LineNumber, [H|Tail], Lines, [MatchedLinesHead|MLTail]) :-
 
 linesMatch([], _, []).
 linesMatch([line(RowNumber, [RowCombHead|RCTail])|RowsTail], Cols, MatchedLines) :-
-		combMatch(RowNumber, RowCombHead, Cols, MatchedRefinedCols), MatchedRefinedCols \= [], replaceLines(Cols, MatchedRefinedCols, ColsWithMatchedRefinedCols), MatchedLines = [line(RowNumber, [RowCombHead])|MLTail], linesMatch(RowsTail, ColsWithMatchedRefinedCols, MLTail);
+		combMatch(RowNumber, RowCombHead, Cols, MatchedRefinedCols), MatchedRefinedCols \= [], replaceLines(Cols, MatchedRefinedCols, ColsWithMatchedRefinedCols), MatchedLines = [/*line(RowNumber, [*/RowCombHead/*])*/|MLTail], linesMatch(RowsTail, ColsWithMatchedRefinedCols, MLTail);
 		linesMatch([line(RowNumber, RCTail)|RowsTail], Cols, MatchedLines).
 
 
@@ -78,7 +78,7 @@ testCombos(TestName, RowCombos, ColCombos) :-
 		testData(TestName, rows(Rows), cols(Cols)),
 		generateCombos(RowCombos, ColCombos, Rows, Cols).
 
-execTestAndWriteRess(TestName):-
+execTestAndWriteRess(TestName, M):-
 		nl,nl,write(TestName),write(':'),
 		testData(TestName, rows(Rs), cols(Cs)),
 		generateCombos(R, C, Rs, Cs),
@@ -89,11 +89,21 @@ execTestAndWriteRess(TestName):-
 
 execTest(TestName,M):-testData(TestName, rows(R), cols(C)),generateCombos(RC, CC, R, C),linesMatch(RC, CC, M).
 
+
+/**
+ *	Nonogram printing.
+ */
+printlist([]).
+printlist([H|T]) :- number(H), swritef(S, '~` tX~%w|', [H]), format(S, []), printlist(T).
+
+printNonogram([]).
+printNonogram([H|T]):- printlist(H), nl, printNonogram(T).
+
 :-nl,write('Tests start. Please wait for "Tests done." message.'),nl,nl.
-:-execTestAndWriteRess(smile).
-:-execTestAndWriteRess(windjammer).
+:-execTestAndWriteRess(smile, N), nl, printNonogram(N).
+:-execTestAndWriteRess(windjammer, N), nl, printNonogram(N).
 :-nl,write('Tests done.').
-:-nl,write('Tests profiling start. Please wait for "Tests profiling done" message.').
-:-nl,write('smile:'),nl,	profile(execTest(smile,_)).
-:-nl,write('windjammer:'),nl,	profile(execTest(windjammer,_)).
-:-nl,write('Tests profiling done.'),nl,nl.
+%:-nl,write('Tests profiling start. Please wait for "Tests profiling done" message.').
+%:-nl,write('smile:'),nl,	profile(execTest(smile,_)).
+%:-nl,write('windjammer:'),nl,	profile(execTest(windjammer,_)).
+%:-nl,write('Tests profiling done.'),nl,nl.
