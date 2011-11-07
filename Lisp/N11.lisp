@@ -24,15 +24,21 @@ c.обчислює середньоквадратичну норму векто�
 ;      (reverse vect)
       vect)))
 
-(defun sqr-summ (vector)
+(defun sqr-summ-r (vector)
   (if (eq vector nil) nil
       (if (eq (list-length vector) 1) (expt (car vector) 2)
 	  (+ (expt (car vector) 2) (sqr-summ (cdr vector))))))
 
-(defun euclidean-norm (vector)
-  (sqrt (sqr-summ vector)))
+(defun euclidean-norm-r (vector)
+  (sqrt (sqr-summ-r vector)))
 
+(defun euclidean-norm-i (vector)
+  (let ((summ 0))
+    (dolist (el vector) (setq summ (+ summ (expt el 2))))
+    (sqrt summ)))
 
+;(defun longest-ascending (vector)
+;  (loop while (nth i vector)
 
 (defun lieq (list1 list2)
   (if (or (eq list1 nil) (eq list2 nil))
@@ -45,7 +51,8 @@ c.обчислює середньоквадратичну норму векто�
    "Tests whether recursive and iterative loaders load the same data."
    (lieq (load-vector-r "N11.TestData.txt") (load-vector-i "N11.TestData.txt"))
    "Tests whether euclidean norm of recursive and iterative data loading is the same."
-   (= (euclidean-norm (load-vector-r "N11.TestData.txt"))
-       (euclidean-norm (load-vector-i "N11.TestData.txt")))
+   (= (euclidean-norm-r (load-vector-r "N11.TestData.txt"))
+;       (euclidean-norm-r (load-vector-i "N11.TestData.txt"))
+      (euclidean-norm-i (load-vector-i "N11.TestData.txt")))
   )
 )
