@@ -2,7 +2,7 @@
 11. Запропонуйте зображення одновимірних масивів чисел за допомогою списків.
 Оголосіть функцію (рекурсивну та ітеративну), що:
 a.завантажує вектор з текстового файла; (+)
-b.знаходить довжину найдовшої впорядкованої за зростанням (спаданням) частини масиву; (+-)
+b.знаходить довжину найдовшої впорядкованої за зростанням (спаданням) частини масиву; (+) (спадання не реалізоване - воно аналогічне зростанню)
 c.обчислює середньоквадратичну норму вектора. (+)
 |#
 
@@ -37,6 +37,21 @@ c.обчислює середньоквадратичну норму векто�
     (dolist (el vector) (setq summ (+ summ (expt el 2))))
     (sqrt summ)))
 
+(defun ascendings-length-r (vector)
+  (if (eq vector nil)
+      0
+      (if (= 1 (list-length vector))
+	  1
+	  (if (< (car vector) (cadr vector))
+	      (+ (ascendings-length-r (cdr vector)) 1)
+	      1))))
+
+(defun longest-ascendings-length-r (vector)
+  (if (eq vector nil)
+      0
+      (let ((l (ascendings-length-r vector)))
+	(max l (longest-ascendings-length-r (nthcdr l vector))))))
+
 (defun ascendings-length-i (vector &optional (i 0))
   (let ((l (list-length vector)))
     (if (<= (- l i) 0) 0
@@ -69,7 +84,8 @@ c.обчислює середньоквадратичну норму векто�
    (= (euclidean-norm-r (load-vector-r "N11.TestData.txt"))
 ;       (euclidean-norm-r (load-vector-i "N11.TestData.txt"))
       (euclidean-norm-i (load-vector-i "N11.TestData.txt")))
-   "Tests whether search result of longest ascending sequence search is correct."
-   (= (longest-ascendings-length-i `(1 2 3 1 2 3 4 1 2 3)) 4)
+   "Tests whether recursive and iterative longest ascending sequence searches are equal."
+   (= (longest-ascendings-length-i `(1 2 3 1 2 3 4 1 2 3))
+      (longest-ascendings-length-r `(1 2 3 1 2 3 4 1 2 3)))
   )
 )
