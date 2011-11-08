@@ -16,3 +16,20 @@
   (with-open-file (in what)
     (funcall how in)))
 
+(defun write-recursively (lst)
+  (if (cdr lst)
+      (format nil "~d/~3,1f, ~a" (caar lst) (cdar lst) (write-recursively (cdr lst))) 
+      (format nil "~d/~3,1f" (caar lst) (cdar lst) )))
+
+(defun write-iteratively (lst)
+  (let ((str (format nil "~d/~3,1f" (caar lst) (cdar lst))))
+    (dolist (i (cdr lst))
+      (setq str (format nil "~a, ~d/~3,1f" str (car i) (cdr i))))
+    str))
+
+;;use:
+;;(out-set <list> #'write-iteratively)
+;;(out-set <list> #'write-recursively)
+(defun out-set (lst how)
+  (format nil "A={~a}" (funcall how lst)))
+  
