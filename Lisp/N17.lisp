@@ -39,30 +39,27 @@
   (format nil "{~a}" (funcall how lst)))
 ;END; Data output
 
-(defun contains (lst item)
+(defun r-contains (lst item)
   (if lst
       (or (= (caar lst) item) (contains (cdr lst) item))
       nil))
 
-(defun probability (lst item)
+(defun i-contains (lst item)
+  (dolist (i lst)
+    (if (eq (car i) item) (return-from i-contains t) nil)))
+   
+(defun r-probability (lst item)
   (if lst
-      (if (= (caar lst) item)
+      (if (eq (caar lst) item)
 	  (cdar lst)
 	  (probability (cdr lst) item))
       nil))
 
-#|(defun probability-i (lst item)
-  (if lst
-      (let ((i 0))
-	(loop while (and (< i (list-length lst)) (eq item (car (nth i lst))))
-			 do (setq i (+ i 1)))
-	(cdr (nth i lst))|#
+(defun i-probability (lst item)
+  (dolist (i lst)
+    (if (eq (car i) item) (return-from i-probability (cdr i)) nil)))
 
-#|(defun probability-i (lst item)
-  (if lst
-      (dolist (i lst)
-	(if (= item )|#
-
+#|
 (defun dintersection (lst1 lst2)
   (cond
     ((eq lst1 nil) nil)
@@ -78,4 +75,4 @@
 					(probability lst2 (caar lst1)))))
 				     (dintersection (cdr lst1) lst2)))
     (t (dintersection (cdr lst1) lst2))))
-
+|#
