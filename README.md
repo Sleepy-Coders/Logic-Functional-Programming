@@ -3,7 +3,7 @@ This project is made for collaboration on logical and functional programing proj
 Prolog
 ==============
 
-This project is made for collaborating on Prolog language projects that should be completed during a functional programing course in Lviv National University.
+Directory containing some solutions in Prolog logical programing language for different tasks: 
 
 Genealogy
 ---------
@@ -29,6 +29,14 @@ featsOfStrength
 Contains some special stuff that's almost impossible to accolplish ;)
 
 **nonogram** directory contains a nonogram (japanese cross-word) solver.
+You can read more about how the nonogram solver works on the Sleepy Coders blog:
+
+ * [Part 1](http://sleepycoders.blogspot.com/2011/10/nonogram-solver-in-prolog-generating.html)
+ * [Part 2](http://sleepycoders.blogspot.com/2011/10/nonogram-solver-in-prolog-combinations.html)
 
 Lisp
 ====
+
+This dir contains some basik tasks for getting a hand on lisp. 
+
+Files ending with `.TestData.txt` are the data files needed by the `.lisp` files with the same name.
