@@ -4,6 +4,8 @@
 a.завантажує вектор з текстового файла; (+)
 b.знаходить довжину найдовшої впорядкованої за зростанням (спаданням) частини масиву; (+) (спадання не реалізоване - воно аналогічне зростанню)
 c.обчислює середньоквадратичну норму вектора. (+)
+
+Everwyhere below '-r' stand for recursive, '-i' stands for iterative.
 |#
 
 (defun read-vector-r (in)
@@ -37,44 +39,60 @@ c.обчислює середньоквадратичну норму векто�
     (dolist (el vector) (setq summ (+ summ (expt el 2))))
     (sqrt summ)))
 
-(defun ascendings-length-r (vector)
+(defun cendings-length-r (func vector)
+  "Counts number of subsequent elements that satisfies condition: (func el el-next) starting from first and ending on first condition fail or at the list's end."
   (if (eq vector nil)
       0
       (if (= 1 (list-length vector))
 	  1
-	  (if (< (car vector) (cadr vector))
-	      (+ (ascendings-length-r (cdr vector)) 1)
+	  (if (funcall func (car vector) (cadr vector))
+	      (+ (cendings-length-r func (cdr vector)) 1)
 	      1))))
 
-(defun longest-ascendings-length-r (vector)
+(defun longest-cendings-length-r (func vector)
   (if (eq vector nil)
       0
-      (let ((l (ascendings-length-r vector)))
-	(max l (longest-ascendings-length-r (nthcdr l vector))))))
+      (let ((l (cendings-length-r func vector)))
+	(max l (longest-cendings-length-r func (nthcdr l vector))))))
 
-(defun ascendings-length-i (vector &optional (i 0))
+(defun longest-ascendings-length-r (vector)
+  (longest-cendings-length-r `< vector))
+(defun longest-descendings-length-r (vector)
+  (longest-cendings-length-r `> vector))
+
+(defun cendings-length-i (func vector &optional (i 0))
+  "Counts number of subsequent elements that satisfies condition: (func el el-next) starting from i'th element and ending on first condition fail or at the list's end."
   (let ((l (list-length vector)))
     (if (<= (- l i) 0) 0
 	(if (= (- l i) 1) 1
 	    (let ((k 1))
 	      (setq l (- l 1))
 	      (loop while (and (< i l)
-			       (< (nth i vector) (nth (+ i 1) vector))) do
+			       (funcall func (nth i vector) (nth (+ i 1) vector))) do
 		   (setq i (+ i 1) k (+ k 1)))
 	      k)))))
 
-(defun longest-ascendings-length-i (vector)
+(defun longest-cendings-length-i (func vector)
   (let ((l (list-length vector)) (i 0) (k 0) tmp)
     (loop while (< i l) do
-	 (setq tmp (ascendings-length-i vector i) i (+ i tmp))
+	 (setq tmp (cendings-length-i func vector i) i (+ i tmp))
 	 (if (< k tmp) (setq k tmp)))
     k))
 
+(defun longest-ascendings-length-i (vector)
+  (longest-cendings-length-i `< vector))
+(defun longest-descendings-length-i (vector)
+  (longest-cendings-length-i `> vector))
+
 (defun lieq (list1 list2)
+  "List equality checker."
   (if (or (eq list1 nil) (eq list2 nil))
       t
       (when (eq (car list1) (car list2))
       (lieq (cdr list1) (cdr list2)))))
+
+(defun setnth (n lst val)
+  (setf (nth n lst) val))
 
 (defun test-all ()
   (and 
@@ -87,5 +105,13 @@ c.обчислює середньоквадратичну норму векто�
    "Tests whether recursive and iterative longest ascending sequence searches are equal."
    (= (longest-ascendings-length-i `(1 2 3 1 2 3 4 1 2 3))
       (longest-ascendings-length-r `(1 2 3 1 2 3 4 1 2 3)))
+   "Checks if setnth works correct."
+   (let ((a `(1 2 3)))
+	   (setnth 2 a 4)
+	   (lieq a `(1 2 4)))
+   "Checks whether 'cendings' work the same way and correct."
+   (= (longest-cendings-length-i `= `(1 1 1 2 3 4 5 5 5 5 6 7 7 7 7 7 7 7))
+      (longest-cendings-length-r `= `(1 1 1 2 3 4 5 5 5 5 6 7 7 7 7 7 7 7))
+      7)
   )
 )
