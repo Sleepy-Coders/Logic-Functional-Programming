@@ -1,6 +1,6 @@
 .DS_Store
-Lisp/*.fasl
-Erlang/**/*.beam
-Erlang/**/*.dump
-Erlang/**/#*#
-Erlang/**/.#*
+*.fasl
+*.beam
+*.dump
+#*#
+.#*
