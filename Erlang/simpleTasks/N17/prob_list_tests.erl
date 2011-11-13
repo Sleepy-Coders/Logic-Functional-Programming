@@ -19,7 +19,10 @@ probability_test() -> ?assertNot(prob_list:probability([],3)),
 		      ?assertEqual(1.0,prob_list:probability(?TEST_LIST,5)),
 		      ?assertNot(prob_list:probability(?TEST_LIST,7)).
 
-lesslist_test() -> ?assertEqual([],prob_list:lesslist([],3)).
+lesslist_test() -> ?assertEqual([],prob_list:lesslist([],3)),
+		   ?assertEqual([],prob_list:lesslist(?TEST_UNO_LIST,2)),
+		   ?assertEqual(?TEST_UNO_LIST,prob_list:lesslist(?TEST_UNO_LIST,3)),
+		   ?assertEqual([{3,0.2},{4,0.6},{6,0.5}],prob_list:lesslist(?TEST_LIST,5)).
 
 intersection_test() -> ?assertEqual([],prob_list:intersection([],[])),
 		       ?assertEqual([],prob_list:intersection([],?TEST_LIST)),
@@ -32,4 +35,5 @@ union_test() -> ?assertEqual([],prob_list:union([],[])),
 		?assertEqual(?TEST_LIST,prob_list:union(?TEST_LIST,[])),
 		?assertEqual(?TEST_LIST,prob_list:union([],?TEST_LIST)),
 		?assertEqual([{2,0.5},{3,0.2},{4,0.6},{5,1.0},{6,0.5}],prob_list:union(?TEST_UNO_LIST, ?TEST_LIST)),
-		?assertEqual([{2,0.95},{3,0.6},{6,0.1},{8,0.5}],prob_list:union(?TEST_UNO_LIST, ?TEST_LIST1)).
+		?assertEqual([{2,0.95},{3,0.6},{6,0.1},{8,0.5}],prob_list:union(?TEST_UNO_LIST, ?TEST_LIST1)),
+		?assertEqual([{3,0.68},{4,0.6},{5,1.0},{6,0.5+0.1-0.5*0.1},{2,0.9},{8,0.5}],prob_list:union(?TEST_LIST, ?TEST_LIST1)).

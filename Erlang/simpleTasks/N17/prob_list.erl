@@ -1,5 +1,12 @@
 -module(prob_list).
+
+-define(NOTEST, true).
+
+-ifndef(TEST).
 -export([intersection/2,union/2]).
+-else.
+-export([intersection/2,union/2,contains/2,probability/2,lesslist/2]).
+-endif.
 
 intersection([], _List) -> [];
 intersection(_List, []) -> []; 
@@ -17,11 +24,11 @@ union([{Item, Probability}|Rest1], List2) -> Contains = contains(List2, Item),
 	true     -> [{Item,Probability}|union(Rest1, List2)]
     end.
 
-%%   SSS U  U PPP  PPP   OO  RRR  TTTTT
-%%  S    U  U P  P P  P O  O R  R   T
-%%   SS  U  U PPP  PPP  O  O RRR    T
-%%     S U  U P    P    O  O R R    T
-%%  SSS   UU  P    P     OO  R  R   T
+%    SSS U  U PPP  PPP   OO  RRR TTTTT  %
+%   S    U  U P  P P  P O  O R  R  T    %
+%    SS  U  U PPP  PPP  O  O RRR   T    %
+%      S U  U P    P    O  O R R   T    %
+%   SSS   UU  P    P     OO  R  R  T    %
 
 contains([], _Item) -> 
     false;
