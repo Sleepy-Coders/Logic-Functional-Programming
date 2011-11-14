@@ -42,7 +42,7 @@
 
 (defun r-contains (lst item)
   (if lst
-      (or (= (caar lst) item) (contains (cdr lst) item))
+      (or (= (caar lst) item) (r-contains (cdr lst) item))
       nil))
 
 (defun i-contains (lst item)
@@ -53,15 +53,20 @@
   (if lst
       (if (eq (caar lst) item)
 	  (cdar lst)
-	  (probability (cdr lst) item))
+	  (r-probability (cdr lst) item))
       nil))
 
 (defun i-probability (lst item)
   (dolist (i lst)
     (if (eq (car i) item) (return-from i-probability (cdr i)) nil)))
 
+(defun less-list (lst item)
+  (if lst  
+      (if (eq (caar lst) item)
+	  (cdr lst)
+	  (cons (car lst) (less-list (cdr lst) item)))))
 
-(defun dintersection (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
+(defun r-intersection (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
   (cond
     ((eq lst1 nil) nil)
     ((funcall content lst2 (caar lst1))
@@ -71,10 +76,39 @@
        (*
 	(cdar lst1)
 	(funcall probability lst2 (caar lst1))))
-       (dintersection (cdr lst1) lst2 :content content :probability probability)))
-     (t (dintersection (cdr lst1) lst2 :content content :probability probability))))
+       (r-intersection (cdr lst1) lst2 :content content :probability probability)))
+     (t (r-intersection (cdr lst1) lst2 :content content :probability probability))))
 
-(defun dunity (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
+(defun i-intersection (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
+  (let ((result nil))
+    (dolist (i lst1)
+      (if (funcall content lst2 (car i))
+		   (setq result (cons (cons
+				       (car i)
+				       (*
+					(cdr i)
+					(funcall probability lst2 (car i))))
+				      result))))
+    result))
+
+(defun r-unity (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
+  (cond
+    ((eq lst1 nil) lst2)
+    ((funcall content lst2 (caar lst1))
+     (cons
+      (cons
+       (caar lst1)
+       (-
+	(+
+	 (cdar lst1)
+	 (funcall probability lst2 (caar lst1)))
+	(*
+	 (cdar lst1)
+	 (funcall probability lst2 (caar lst1)))))
+      (r-unity (cdr lst1) (less-list lst2 (caar lst1)))))
+    (t (cons (car lst1) (r-unity (cdr lst1) lst2)))))
+
+(defun i-unity (lst1 lst2 &key (content #'i-contains) (probability #'r-probability))
   (let ((result nil))
     (if lst1
 	(dolist (i lst1)
@@ -94,9 +128,11 @@
 	      (setq result (cons i result)))))
     (if lst2
 	(dolist (i lst2)
-	  (if (funcall content lst1 (car i))
+	  (if (not (funcall content lst1 (car i)))
 	      (setq result (cons i result)))))
     result))
+
+
 
 
 #| good idea bad knowladge: list isn't modified
