@@ -2,5 +2,6 @@
 *.fasl
 *.beam
 *.dump
+*.erl~
 #*#
 .#*
