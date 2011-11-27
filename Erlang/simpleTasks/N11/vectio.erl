@@ -1,5 +1,6 @@
 -module(vectio).
--export([read_file/1,write_list/1]).
+-export([read_file/1,
+	 write_vector/1]).
 
 read_file(File)            ->
     {ok, Device} = file:open(File,read),
@@ -11,8 +12,9 @@ read_to_list(Device, List) ->
 	{ok, [Num]} -> read_to_list(Device, [Num|List])
     end.
 
-write_list(List)          -> io:format("{~s}",format_vector(List)).
+write_vector(Vector)      -> io:format("(~s)", [preformat_vector(Vector)]).
 
-format_vector([])         -> "";
-format_vector([Num])      -> io_lib:format("~d", Num);
-format_vector([Num|Tail]) -> io_lib:format("~d, ~s", Num, format_vector(Tail)).
+preformat_vector([])         -> "";
+preformat_vector([Num])      -> io_lib:format("~w", [Num]);
+preformat_vector([Num|Tail]) -> 
+    io_lib:format("~w, ~s", [Num, preformat_vector(Tail)]).
