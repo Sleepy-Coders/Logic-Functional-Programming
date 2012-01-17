@@ -1,4 +1,4 @@
-This project is made for collaboration on logical and functional programing projects that should be completed during a course in Lviv National University.
+This project is made for collaboration on logical and functional programing projects that should be completed during a course of **Logical and Functional Programming** in Lviv National University.
 
 Prolog
 ==============
@@ -39,4 +39,19 @@ Lisp
 
 This dir contains some basik tasks for getting a hand on lisp. 
 
+binarySearchTree
+----------------
+
+An implementation of a tree data structure with search functions.
+
+simpleTasks
+-----------
+
+Contains some basic tasks solutions. Name of the file is the number of the task. The task itself is at the begining of the file with code as the comment *(in ukrainian)*. 
+
 Files ending with `.TestData.txt` are the data files needed by the `.lisp` files with the same name.
+
+Erlang
+======
+
+Directory has some basic stuff coded in Erlang. The tasks are the same as for lisp and the implementation has some API that solves a task itself as well as client-server support.
